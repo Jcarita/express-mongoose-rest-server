@@ -13,7 +13,6 @@ yarn-error.log*
 
 .env
 .env.*
-*.env
 
 *.log
 logs
