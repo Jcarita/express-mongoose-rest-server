@@ -1,14 +1,14 @@
-import { Schema, model } from 'mongoose'
-import { ERoles } from './role.model'
+import { Schema, model } from 'mongoose';
+import { ERoles } from './role.model';
 
-export interface IUser {
-  name: string
-  email: string
-  password: string
-  img: string
-  role: ERoles
-  active: boolean
-  google: boolean
+export interface IUser extends Document {
+  name: string;
+  email: string;
+  password: string;
+  img: string;
+  role: ERoles;
+  active: boolean;
+  google: boolean;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -23,11 +23,11 @@ const UserSchema = new Schema<IUser>({
   role: { type: String, enum: Object.values(ERoles), default: ERoles.USER },
   active: { type: Boolean, default: true },
   google: { type: Boolean, default: false },
-})
+});
 
 UserSchema.methods.toJSON = function () {
-  const { __v, password, ...user } = this.toObject()
-  return user
-}
+  const { __v, password, _id, ...user } = this.toObject();
+  return { uid: _id, ...user };
+};
 
-export const UserModel = model<IUser>('User', UserSchema)
+export const UserModel = model<IUser>('User', UserSchema);

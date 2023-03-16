@@ -1,27 +1,27 @@
-import { Router } from 'express'
+import { Router } from 'express';
 import {
   deleteUser,
   getAllUsers,
   getUserById,
   saveUser,
   updateUser,
-} from '../controllers/user.controller'
+} from '../controllers/user.controller';
 import {
   createUserValidator,
   updateUserValidator,
   deleteUserValidator,
-} from '../validators/user.validator'
+} from '../validators/user.validator';
 
-const router = Router()
+const router = Router();
 
-router.get('', getAllUsers)
+router.get('', getAllUsers);
 
-router.get('/:id', getUserById)
+router.get('/:id', getUserById);
 
-router.post('', createUserValidator, saveUser)
+router.post('', createUserValidator, saveUser);
 
-router.put('/:id', updateUserValidator, updateUser)
+router.put('/:id', updateUserValidator, updateUser);
 
-router.delete('/:id', deleteUserValidator, deleteUser)
+router.delete('/:id', deleteUserValidator, deleteUser);
 
-export default router
+export default router;

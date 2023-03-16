@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose';
 
 export enum ERoles {
   ADMIN = 'ADMIN_ROLE',
@@ -7,7 +7,7 @@ export enum ERoles {
 }
 
 export interface IRole {
-  role: string
+  role: string;
 }
 
 const RoleSchema = new Schema<IRole>({
@@ -17,6 +17,6 @@ const RoleSchema = new Schema<IRole>({
     enum: Object.values(ERoles),
     default: ERoles.USER,
   },
-})
+});
 
-export const RoleModel = model<IRole>('Role', RoleSchema)
+export const RoleModel = model<IRole>('Role', RoleSchema);
