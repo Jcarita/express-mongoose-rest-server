@@ -1,7 +1,7 @@
 import express from 'express';
-import helmet from 'helmet';
+// import helmet from 'helmet';
 import morgan from 'morgan';
-import cors from 'cors';
+// import cors from 'cors';
 import { router } from '../router';
 import { config } from 'dotenv';
 import { connectionDB } from '../database/config';
@@ -18,9 +18,13 @@ export class Server {
   }
 
   init() {
-    this.app.use(helmet());
+    // this.app.use(helmet.contentSecurityPolicy({
+    //   directives: {
+    //     'script-src': ["'self'", ""]
+    //   }
+    // }));
     this.app.use(morgan('dev'));
-    this.app.use(cors());
+    // this.app.use(cors({ origin: '*' }));
 
     this.database();
 
@@ -30,6 +34,7 @@ export class Server {
   }
 
   middlewares() {
+    this.app.use(express.static('public'))
     this.app.use(express.json());
   }
 

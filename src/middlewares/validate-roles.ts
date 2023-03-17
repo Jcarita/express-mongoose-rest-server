@@ -29,3 +29,24 @@ export const isAdminRole = (
 
   next();
 };
+
+export const hasRoles = (...roles: string[]) => {
+  return (req: IRequest, res: Response, next: NextFunction) => {
+    const user = req.user;
+
+    if (!user) {
+      return res.status(HTTP_STATUS_SERVER_ERROR).json({
+        msg: 'validate the role without validating the token first',
+      });
+    }
+
+    if (!roles.includes(user.role)) {
+      return res.status(HTTP_STATUS_UNAUTHORIZED).json({
+        msg: `the service requires these roles: ${roles}`,
+      });
+    }
+
+    console.log(roles);
+    next();
+  };
+};

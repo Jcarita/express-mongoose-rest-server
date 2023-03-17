@@ -1,5 +1,5 @@
 import { body } from 'express-validator';
-import { validateFields } from '../middlewares/validate-fields';
+import { validateFields } from '../middlewares';
 
 export const loginValidator = [
   body('email', 'The email is required').isEmail(),
