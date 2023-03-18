@@ -45,8 +45,6 @@ export const hasRoles = (...roles: string[]) => {
         msg: `the service requires these roles: ${roles}`,
       });
     }
-
-    console.log(roles);
     next();
   };
 };

@@ -1,7 +1,8 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model, Document, ObjectId } from 'mongoose';
 import { IUser } from './user.model';
 
 export interface ICategory extends Document {
+  uid?: ObjectId;
   name: string;
   active: boolean;
   user?: IUser;
@@ -30,4 +31,4 @@ CategorySchema.methods.toJSON = function () {
   return { uid: _id, ...category };
 };
 
-export const CateogryModel = model<ICategory>('category', CategorySchema);
+export const CateogryModel = model<ICategory>('Category', CategorySchema);

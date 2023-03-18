@@ -1,7 +1,4 @@
-import { UserModel } from '../models/user.model';
-import { RoleModel } from '../models/role.model';
-import { CateogryModel } from '../models/category.model';
-
+import { UserModel, RoleModel, CateogryModel, ProductModel } from '../models';
 export const isRoleValid = async (role: string) => {
   const roleExist = await RoleModel.findOne({ role });
   if (!roleExist) {
@@ -26,6 +23,13 @@ export const userByIdExist = async (id: string) => {
 export const categoryExist = async (id: string) => {
   const categoryExist = await CateogryModel.findById(id);
   if (!categoryExist) {
-    throw new Error(`The category with id: ${id}, not exist`);
+    throw new Error(`The category with id: ${id} not exist`);
+  }
+};
+
+export const productExist = async (id: string) => {
+  const productExist = await ProductModel.findById(id);
+  if (!productExist) {
+    throw new Error(`The product with id: ${id} not exist`);
   }
 };

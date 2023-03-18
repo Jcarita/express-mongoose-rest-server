@@ -91,7 +91,7 @@ export const updateCategory = async (
 ) => {
   const { id } = req.params as { id: string };
 
-  const { active, user, ...category } = req.body as ICategory;
+  const { active, user, uid, ...category } = req.body as ICategory;
   const updateCategory = {
     user: req.user?._id,
     name: category.name.toUpperCase(),
