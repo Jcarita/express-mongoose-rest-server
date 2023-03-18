@@ -1,7 +1,8 @@
-import { Schema, model } from 'mongoose';
+import { ObjectId, Schema, model } from 'mongoose';
 import { ERoles } from './role.model';
 
 export interface IUser extends Document {
+  _id?: ObjectId;
   name: string;
   email: string;
   password: string;

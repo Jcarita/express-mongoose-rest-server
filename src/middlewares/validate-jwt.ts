@@ -4,14 +4,14 @@ import { HTTP_STATUS_UNAUTHORIZED } from '../utils/serverCodes';
 import { UserModel } from '../models/user.model';
 import { IRequest, IJwtPayload } from '../interfaces/server.interface';
 
-export const validarJWT = async (
+export const validateJWT = async (
   req: IRequest,
   res: Response,
   next: NextFunction
 ) => {
   const SECRET_KEY = process.env.SECRET_KEY as string;
   const token: string | undefined = req.header('x-token');
-  console.log({ token });
+
   if (!token) {
     return res.status(HTTP_STATUS_UNAUTHORIZED).json({
       msg: 'There is not token in the request',

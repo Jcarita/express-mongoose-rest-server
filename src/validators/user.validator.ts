@@ -1,5 +1,5 @@
 import { body, check } from 'express-validator';
-import { validarJWT, validateFields, hasRoles } from '../middlewares';
+import { validateJWT, validateFields, hasRoles } from '../middlewares';
 import { ERoles } from '../models/role.model';
 import {
   isEmailExist,
@@ -26,7 +26,7 @@ export const updateUserValidator = [
 ];
 
 export const deleteUserValidator = [
-  validarJWT,
+  validateJWT,
   hasRoles(ERoles.ADMIN),
   check('id', 'It is not a valid ID').isMongoId(),
   check('id').custom(userByIdExist),
