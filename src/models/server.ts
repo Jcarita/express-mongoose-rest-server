@@ -1,9 +1,10 @@
 import express from 'express';
 // import helmet from 'helmet';
 import morgan from 'morgan';
-// import cors from 'cors';
-import { router } from '../router';
 import { config } from 'dotenv';
+// import cors from 'cors';
+import fileUpload from 'express-fileupload';
+import { router } from '../router';
 import { connectionDB } from '../database/config';
 import { swaggerDocs } from '../router/swagger';
 config();
@@ -38,6 +39,14 @@ export class Server {
     this.app.use(express.static('public'));
     this.app.use(express.json());
     swaggerDocs(this.app, this.port);
+
+    this.app.use(
+      fileUpload({
+        useTempFiles: true,
+        tempFileDir: '/tmp/',
+        createParentPath: true,
+      })
+    );
   }
 
   async database() {
