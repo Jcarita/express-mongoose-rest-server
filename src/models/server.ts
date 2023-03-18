@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import { router } from '../router';
 import { config } from 'dotenv';
 import { connectionDB } from '../database/config';
+import { swaggerDocs } from '../router/swagger';
 config();
 
 export class Server {
@@ -36,6 +37,7 @@ export class Server {
   middlewares() {
     this.app.use(express.static('public'));
     this.app.use(express.json());
+    swaggerDocs(this.app, this.port);
   }
 
   async database() {
