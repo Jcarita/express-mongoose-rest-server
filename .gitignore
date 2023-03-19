@@ -27,3 +27,5 @@ pids
 *.js.map
 
 *.tsbuildinfo
+
+src/uploads/*/**.*

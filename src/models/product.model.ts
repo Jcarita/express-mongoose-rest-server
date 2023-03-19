@@ -9,6 +9,7 @@ export interface IProduct extends Document {
   description: string;
   precio: number;
   active: boolean;
+  img?: string;
   available: boolean;
   user?: IUser;
   category?: ICategory;
@@ -29,6 +30,9 @@ const ProductSchema = new Schema<IProduct>({
     type: Boolean,
     default: true,
     required: true,
+  },
+  img: {
+    type: String,
   },
   available: {
     type: Boolean,
